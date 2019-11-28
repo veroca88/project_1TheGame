@@ -2,7 +2,27 @@ let ctx = null;
 let tileW = 53.4, tileH = 50;
 let mapW = 15, mapH = 16;
 
-let currentSecond = 0, frameCount = 0, frameLastSecond = 0;
+let currentSecond = 0, frameCount = 0, frameLastSecond = 0, lastFrameTime = 0;
+
+let keysDown = {
+    37 : false,
+    38 : false,
+    39 : false,
+    40 : false
+}
+
+var player = new Character();
+
+class Character {
+    constructor() {
+        this.tileForm = [1, 1],
+        this.tileTo = [1, 1],
+        this.timeMoved = 0,
+        this.img = new Image()
+        this.position = [45, 45],
+        this.delayMove = 700
+    }
+}
 
 let gameMap = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -22,6 +42,7 @@ let gameMap = [
     0, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ];
+
 
 window.onload = function () {
     ctx = document.getElementById("game").getContext("2d");
