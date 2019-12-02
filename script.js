@@ -1,29 +1,3 @@
-let ctx = null;
-let tileW = 53.4, tileH = 50;
-let mapW = 15, mapH = 16;
-
-let currentSecond = 0, frameCount = 0, frameLastSecond = 0, lastFrameTime = 0;
-
-let keysDown = {
-    37 : false,
-    38 : false,
-    39 : false,
-    40 : false
-}
-
-var player = new Character();
-
-class Character {
-    constructor() {
-        this.tileForm = [1, 1],
-        this.tileTo = [1, 1],
-        this.timeMoved = 0,
-        this.img = new Image()
-        this.position = [45, 45],
-        this.delayMove = 700
-    }
-}
-
 let gameMap = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 0,
@@ -32,7 +6,7 @@ let gameMap = [
     0, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 0,
     0, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 0,
     0, 1, 2, 1, 1, 1, 1, 2, 1, 2, 2, 2, 1, 2, 0,
-    0, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 2, 1, 2, 0,
+    0, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 1, 1, 0,
     0, 1, 1, 1, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 0,
     0, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 1, 2, 1, 0,
     0, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 1, 2, 1, 0,
@@ -42,30 +16,104 @@ let gameMap = [
     0, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ];
+let ctx = null;
+let tileW = 53.4, tileH = 50;
+let mapW = 15, mapH = 16;
 
+let currentSecond = 0, frameCount = 0, framesLastSecond = 0, lastFrameTime = 0;
+
+let keysDown = {
+    37: false,
+    38: false,
+    39: false,
+    40: false
+};
+
+let player = new Character();
+
+function Character() {
+    this.tileFrom = [1, 1];
+    this.tileTo = [1, 1];
+    this.timeMoved = 0;
+    this.dimensions = [30, 30];
+    this.position = [45, 45];
+    this.delayMove = 700;
+}
+Character.prototype.placeAt = function (x, y) {
+    this.tileFrom = [x, y];
+    this.tileTo = [x, y];
+    this.position = [((tileW * x) + ((tileW - this.dimensions[0]) / 2)),
+    ((tileH * y) + ((tileH - this.dimensions[1]) / 2))];
+};
+Character.prototype.processMovement = function (t) {
+    if (this.tileFrom[0] == this.tileTo[0] && this.tileFrom[1] == this.tileTo[1]) { return false; }
+
+    if ((t - this.timeMoved) >= this.delayMove) {
+        this.placeAt(this.tileTo[0], this.tileTo[1]);
+    }
+    else {
+        this.position[0] = (this.tileFrom[0] * tileW) + ((tileW - this.dimensions[0]) / 2);
+        this.position[1] = (this.tileFrom[1] * tileH) + ((tileH - this.dimensions[1]) / 2);
+
+        if (this.tileTo[0] != this.tileFrom[0]) {
+            var diff = (tileW / this.delayMove) * (t - this.timeMoved);
+            this.position[0] += (this.tileTo[0] < this.tileFrom[0] ? 0 - diff : diff);
+        }
+        if (this.tileTo[1] != this.tileFrom[1]) {
+            var diff = (tileH / this.delayMove) * (t - this.timeMoved);
+            this.position[1] += (this.tileTo[1] < this.tileFrom[1] ? 0 - diff : diff);
+        }
+
+        this.position[0] = Math.round(this.position[0]);
+        this.position[1] = Math.round(this.position[1]);
+    }
+
+    return true;
+}
+
+function toIndex(x, y) {
+    return ((y * mapW) + x);
+}
 
 window.onload = function () {
-    ctx = document.getElementById("game").getContext("2d");
+    ctx = document.getElementById('game').getContext("2d");
     requestAnimationFrame(drawGame);
-    ctx.front = "bold 10pt sans-serif"
+    ctx.font = "bold 10pt sans-serif";
+
+    window.addEventListener("keydown", function (e) {
+        if (e.keyCode >= 37 && e.keyCode <= 40) { keysDown[e.keyCode] = true; }
+    });
+    window.addEventListener("keyup", function (e) {
+        if (e.keyCode >= 37 && e.keyCode <= 40) { keysDown[e.keyCode] = false; }
+    });
 };
 
 function drawGame() {
-    if (ctx === null) {
-        return;
-    }
-    let seconds = Math.floor(Date.now() / 1000)
-    if (seconds != currentSecond) {
-        currentSecond = seconds;
-        frameLastSecond = frameCount;
+    if (ctx == null) { return; }
+
+    var currentFrameTime = Date.now();
+    var timeElapsed = currentFrameTime - lastFrameTime;
+
+    var sec = Math.floor(Date.now() / 1000);
+    if (sec != currentSecond) {
+        currentSecond = sec;
+        framesLastSecond = frameCount;
         frameCount = 1;
-    } else {
-        frameCount++
     }
-    for (let y = 0; y < mapH; y++) {
-        // console.log(this.mapHeigth[y])
-        for (let x = 0; x < mapW; x++) {
-            switch (gameMap[(y * mapW) + x]) {
+    else { frameCount++; }
+
+    if (!player.processMovement(currentFrameTime)) {
+        if (keysDown[38] && player.tileFrom[1] > 0 && gameMap[toIndex(player.tileFrom[0], player.tileFrom[1] - 1)] == 1) { player.tileTo[1] -= 1; }
+        else if (keysDown[40] && player.tileFrom[1] < (mapH - 1) && gameMap[toIndex(player.tileFrom[0], player.tileFrom[1] + 1)] == 1) { player.tileTo[1] += 1; }
+        else if (keysDown[37] && player.tileFrom[0] > 0 && gameMap[toIndex(player.tileFrom[0] - 1, player.tileFrom[1])] == 1) { player.tileTo[0] -= 1; }
+        else if (keysDown[39] && player.tileFrom[0] < (mapW - 1) && gameMap[toIndex(player.tileFrom[0] + 1, player.tileFrom[1])] == 1) { player.tileTo[0] += 1; }
+
+        if (player.tileFrom[0] != player.tileTo[0] || player.tileFrom[1] != player.tileTo[1]) { player.timeMoved = currentFrameTime; }
+    }
+
+    for (let y = 0; y < mapH; ++y) {
+        for (let x = 0; x < mapW; ++x) {
+            switch (gameMap[((y * mapW) + x)]) {
                 case 0:
                     ctx.fillStyle = "#549393";
                     break;
@@ -78,11 +126,50 @@ function drawGame() {
                 default:
                     ctx.fillStyle = "#549393";
             }
+
             ctx.fillRect(x * tileW, y * tileH, tileW, tileH);
         }
     }
-    ctx.fillStyle = "yellow";
-    ctx.fillText("FPS: " + framesLastSecond, 10, 20)
 
+    ctx.fillStyle = "#0000ff";
+    ctx.fillRect(player.position[0], player.position[1],
+        player.dimensions[0], player.dimensions[1]);
+
+    ctx.fillStyle = "#ff0000";
+    ctx.fillText("FPS: " + framesLastSecond, 10, 20);
+
+    lastFrameTime = currentFrameTime;
     requestAnimationFrame(drawGame);
 }
+
+
+
+//     for (let y = 0; y < mapH; y++) {
+//         // console.log(this.mapHeigth[y])
+//         for (let x = 0; x < mapW; x++) {
+//             switch (gameMap[(y * mapW) + x]) {
+//                 case 0:
+//                     ctx.fillStyle = "#549393";
+//                     break;
+//                 case 1:
+//                     ctx.fillStyle = "#E1E1D4";
+//                     break;
+//                 case 2:
+//                     ctx.fillStyle = "#3F5A6C";
+//                     break;
+//                 default:
+//                     ctx.fillStyle = "#549393";
+//             }
+//             ctx.fillRect(x * tileW, y * tileH, tileW, tileH);
+//         }
+//     }
+//     // ctx.fillStyle = "#0000ff";
+//     // ctx.fillRect(player.position[0], player.position[1], player.dimensions[0], player.dimensions[1]);
+
+//     ctx.fillStyle = "yellow";
+//     ctx.fillText("FPS: " + framesLastSecond, 10, 20)
+
+//     // lastFrameTime = currentFrameTime;
+//     requestAnimationFrame(drawGame);
+// }
+
