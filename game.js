@@ -40,7 +40,7 @@ class Game {
 
         initGame() {
             // console.log("in the in it game method ==== ", this.ctx)
-            window.requestAnimationFrame(this.drawGame())
+            window.requestAnimationFrame(this.drawGame)
             this.ctx.font = "bold 10pt sans-serif";
         }
 
