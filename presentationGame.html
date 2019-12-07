@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Font Style -->
+    <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
+
+    <title>Where did I put my keys?</title>
+</head>
+
+<body>
+    <h1 id="presentation">Where did I put my keys?</h1>
+    <img id="brain-presentation" src="./images/freezingBrain.png" alt="animated brain">
+    <img id="key-presentation" src="./images/goldKey.png" alt="animated key">
+    <a href="about-us" id="about-game">About the game</a>
+    <button class="myButton">START GAME</button>
+
+
+    <script>
+        
+        
+        function presentationMove() {
+
+            elPlayer = document.getElementById("brain-presentation");
+            
+            docWidth = screen.width - elPlayer.width;
+            docHeigth = screen.height - elPlayer.height;
+            
+            setInterval(move, 600)
+        }
+        
+        function move() {
+
+            elPlayer.style.top = Math.round(Math.random() * docWidth) + "px"
+            elPlayer.style.left = Math.round(Math.random() * docHeigth) + "px"
+        }
+        
+        // let elGoal = document.getElementById("key-presentation")
+
+        presentationMove()
+
+    </script>
+
+</body>
+
+</html>
