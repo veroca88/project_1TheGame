@@ -6,13 +6,6 @@ body {
     color: white;
 }
 
-#board-game {
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 /* Presentation Game Page */
 
 #brain-presentation {
@@ -27,7 +20,7 @@ body {
     text-decoration: none;
     font-size: 20px;
     color: white;
-
+    font-family: 'Sulphur Point', sans-serif;
 }
 
 #presentation {
@@ -73,3 +66,16 @@ body {
 	position:relative;
 	top:1px;
 }
+
+/* Game.js */
+
+#board-game {
+    border: 1px solid white;
+    height: 800px;
+    width: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
