@@ -8,9 +8,5 @@ class Component {
         this.img = new Image()
     }
 
-    drawComponent(imgSource) {
-        let compCtx = this.game.ctx;
-        this.img.src = imgSource;
-        compCtx.drawImage(this.img, this.x, this.y, this.w, this.h)
-    }
+    
 }
