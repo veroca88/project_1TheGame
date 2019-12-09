@@ -8,17 +8,25 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Sulphur+Point&display=swap" rel="stylesheet">
+
+    <link href="./images/favicon.ico" rel="icon" type="image/x-icon" />
     
     <title>Where did I put my keys?</title>
     
 </head>
-<body>
+<body id="game-body">
+    <div>
     <h1>Where did I put my keys?</h1>
+    <h2>Lives: </h2>
+
+    <span class="desc-game">🧠 🧠 🧠</span>
+    </div>
     <div id="board-game">
-        <canvas id="game" width="800" height="800"></canvas>        
+        <canvas id="game" width="900" height="900"></canvas>        
         
     </div>
     <script src="./game.js"></script>
+    <script src="./component.js"></script>
     <script src="./index.js"></script>
 </body>
 </html>

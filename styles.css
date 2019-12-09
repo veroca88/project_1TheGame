@@ -1,13 +1,28 @@
 body {
+    font-family: 'Sulphur Point', sans-serif;
+    /* background-image: url(./images/milkyWay.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    
+}
+h1 {
+    font-size: 3rem;
+}
+h2 {
+    display: inline;
+    font-size: 1.8rem;
+    padding-right: 10%;
+}
+/* Presentation Game Page */
+
+#presentation-body {
     height: 450px;
-    background-color: transparent;
+    background-color: black;
     text-align: center;
     font-family: 'Sulphur Point', sans-serif;
     color: white;
 }
-
-/* Presentation Game Page */
-
 #brain-presentation {
     width: 150px;
     position: fixed;
@@ -42,7 +57,7 @@ body {
 }
 
 .myButton {
-	box-shadow: 3px -5px 3px -1px #ffffff;
+    box-shadow: 3px -5px 3px -1px #ffffff;
 	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
 	background-color:#f9f9f9;
 	border-radius:27px;
@@ -59,7 +74,7 @@ body {
 	text-shadow:0px 1px 0px #ffffff;
 }
 .myButton:hover {
-	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
 	background-color:#e9e9e9;
 }
 .myButton:active {
@@ -69,13 +84,22 @@ body {
 
 /* Game.js */
 
+#game-body {
+    background-color: rgb(65, 138, 50);
+    /* background-color: rgb(223,196,127); */
+    display: flex;
+    justify-content: space-around;
+}
+
 #board-game {
     border: 1px solid white;
-    height: 800px;
-    width: 800;
+    height: 900px;
+    width: 900px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+.desc-game {
+    font-size: 50px;
 }
 
 
