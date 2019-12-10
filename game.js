@@ -8,7 +8,7 @@ class Game {
         this.wall = new Image();
         this.blackHole = new Image();
 
-        this.brainPlayer = new Component(this, 70, 70, 65, 65);
+        this.brainPlayer = new Component(this, 70, 70, 40, 40);
         this.key = new Component(this, 760, 760, 65, 65);
         this.cols = 16;
         this.row = 16;
@@ -32,14 +32,13 @@ class Game {
             [0, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         ],
-        this.eachTile;
+        this.numberTile = undefined;
     }
 
     init() {
         this.start()
-
     }
-
+    
     start() {
         this.drawBackground()
         this.grass.src = "./images/grass.png";
@@ -50,9 +49,11 @@ class Game {
         const interId = setInterval(() => {
             // this.clear()
             this.drawBackground()
+            // this.challenge(this.gameMap) //////////////////
             this.brainPlayer.move()
             this.brainPlayer.drawComponent("./images/brain.png");
             this.key.drawComponent("./images/goldKey.png");
+    
         }, 500)
     }
 
@@ -63,11 +64,10 @@ class Game {
     drawBackground() {
         for (let x = 0; x < this.gameMap.length; x++) {
             for (let y = 0; y < this.gameMap[x].length; y++) {
-                this.eachTile = this.gameMap[x][y]
-
                 // console.log(`===========${this.gameMap[y][x]}===============`)
+                this.numberTile = this.gameMap[x][y]
 
-                switch (this.eachTile) {
+                switch (this.numberTile) {
                     case 0:
                         this.ctx.drawImage(this.grass, this.tileW * x, this.tileH * y, this.tileW, this.tileH);
                         // console.log(`case 0 ${this.wall.src}=================`)
@@ -84,11 +84,9 @@ class Game {
                         this.ctx.drawImage(this.blackHole, this.tileW * x, this.tileH * y, this.tileW, this.tileH);
                     // console.log(`case 3 ${this.wall}=================`)
                 }
-
             }
         }
     }
-
 
 }
 

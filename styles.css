@@ -8,11 +8,12 @@ body {
 }
 h1 {
     font-size: 3rem;
+    margin-bottom: 20%;
 }
 h2 {
     display: inline;
     font-size: 1.8rem;
-    padding-right: 10%;
+    padding: 10%;
 }
 /* Presentation Game Page */
 
