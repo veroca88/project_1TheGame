@@ -8,12 +8,10 @@ body {
 }
 h1 {
     font-size: 3rem;
-    margin-bottom: 20%;
 }
 h2 {
     display: inline;
     font-size: 1.8rem;
-    padding: 10%;
 }
 /* Presentation Game Page */
 
@@ -89,6 +87,7 @@ h2 {
     background-color: rgb(65, 138, 50);
     /* background-color: rgb(223,196,127); */
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
 }
 
@@ -101,6 +100,29 @@ h2 {
 
 .desc-game {
     font-size: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+/* Question Box */
+.q-box {
+    display: contents;
+    flex-direction: row;
+
+}
+
+#spiral {
+    position: relative;
+    visibility: hidden;
+    right: 350px;
+    top: 40%;
+    width: 400px;
+}
+
+#questions {
+    position: relative;
+    visibility: hidden;
+    top: 40px;
 }
 
 
