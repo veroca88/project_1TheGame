@@ -11,8 +11,33 @@ h1 {
 }
 h2 {
     display: inline;
-    font-size: 1.8rem;
+    font-size: 2.4rem;
 }
+h3 {
+    font-size: 2rem;
+}
+h4 {
+    position: absolute;
+    font-size: 2rem;
+    animation: messageLost 0s ease-in 1s forwards;
+}
+
+input {
+    padding: 15px;
+    margin: 30px;;
+}
+span {
+    display: contents;
+}
+
+@keyframes messageLost {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+
 /* Presentation Game Page */
 
 #presentation-body {
@@ -87,7 +112,6 @@ h2 {
     background-color: rgb(65, 138, 50);
     /* background-color: rgb(223,196,127); */
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
 }
 
@@ -99,30 +123,64 @@ h2 {
 }
 
 .desc-game {
-    font-size: 50px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 /* Question Box */
-.q-box {
-    display: contents;
-    flex-direction: row;
+.game-box {
+    width: 900px;
+    height: 900px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+#q-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #spiral {
-    position: relative;
     visibility: hidden;
-    right: 350px;
-    top: 40%;
-    width: 400px;
+    width: 300px;
+    position: absolute;
+    left: -20px;
 }
 
 #questions {
-    position: relative;
     visibility: hidden;
-    top: 40px;
+    width: 500px;
+    height: 400px;
+    margin-left: 200px;
+    margin-top: 100px;
 }
+
+.btn-submit {
+    background: #3DF6E5;
+    background-image: linear-gradient(to bottom, #3DF6E5, #1E62D0);
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-weight: 100;
+    padding: 10px;
+    border: solid #337FED 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+    
+.btn-submit:hover {
+    background: #238A32;
+    border: dotted #238A32 1px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+
+
 
 

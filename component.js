@@ -8,7 +8,8 @@ class Component {
         this.col = 1;
         this.row = 1;
         this.img = new Image();
-        this.tilePosition = 0
+        this.tilePosition = 0;
+        this.direction;
     }
     drawComponent(imgSource) {
         let daCtx = this.game.ctx;
@@ -27,47 +28,56 @@ class Component {
                 event.preventDefault();
                 switch (key) {
                     case 37: //left
-                    case 65:
+                    // case 65:
                         this.tilePosition = this.game.gameMap[this.row]
                         // if (this.tilePosition[this.col - 1] === 1 || this.tilePosition[this.col - 1] === 4 && this.x >= 0) {
                             if (this.tilePosition[this.col - 1] === 1 && this.x >= 0) {
-                                this.x -= 56.25;
+                                this.x -= this.game.tileW;
                                 this.col--;
                             } else if (this.tilePosition[this.col - 1] === 4) {
-                                this.game.renderSpiral()                          
+                                this.direction = 2;
+                                this.game.renderSpiral()
+                                console.log(`============position x: ${this.x} position y: ${this.y}`)    
                         }
                         break;
                     case 38: //up
-                    case 87:
+                    // case 87:
                         this.tilePosition = this.game.gameMap[this.row - 1]
                         // if (this.tilePosition[this.col] === 1 || this.tilePosition[this.col] === 4 && this.y >= 0) {
                             if (this.tilePosition[this.col] === 1 && this.y >= 0) {
-                            this.y -= 56.25;
+                            this.y -= this.game.tileH;
                             this.row--;
                         } else if (this.tilePosition[this.col] === 4 ) {
+                            this.direction = 3;
                             this.game.renderSpiral()
+                            console.log(`============position x: ${this.x} position y: ${this.y}`)
+                            // this.game.createQuestion()
                         }
                         break;
                     case 39: //rigth
-                    case 83:
+                    // case 83:
                         this.tilePosition = this.game.gameMap[this.row]
                         // if (this.tilePosition[this.col + 1] === 1 || this.tilePosition[this.col + 1] === 4 && this.x <= 900 - this.width) {
                             if (this.tilePosition[this.col + 1] === 1 && this.x <= 900 - this.width) {
-                            this.x += 56.25;
+                            this.x += this.game.tileW;
                             this.col++;
                         } else if (this.tilePosition[this.col + 1] === 4) {
+                            this.direction = 0;
                             this.game.renderSpiral()
+                            console.log(`============position x: ${this.x} position y: ${this.y}`)
                         }
                         break;
                     case 40: //down
-                    case 68:
+                    // case 68:
                         this.tilePosition = this.game.gameMap[this.row + 1]
                         // if (this.tilePosition[this.col] === 1 || this.tilePosition[this.col] === 4 && this.y <= 900 - this.height) {
                             if (this.tilePosition[this.col] === 1 && this.y <= 900 - this.height) {
-                            this.y += 56.25;
+                            this.y += this.game.tileH;
                             this.row++;
                         } else if (this.tilePosition[this.col] === 4) {
+                            this.direction = 1;
                             this.game.renderSpiral()
+                            console.log(`============position x: ${this.x} position y: ${this.y}`)
                         }
                         break;
                 }
@@ -90,27 +100,4 @@ class Component {
         return this.y + this.height;
     }
 
-    // didCollide(otherComp) {
-    //     const crossLeft = //move left to rigth
-    //         otherComp.x + (otherComp.width)/2 <= this.getRight()
-
-    //     const crossRight =
-    //         otherComp.x + (otherComp.width/2)>= this.getLeft()
-
-    //     const crossTop =
-    //         otherComp.y <= this.getBottom()
-
-    //     const crossBottom =
-    //         otherComp.y + otherComp.height <= this.getTop();
-
-    //     if ((crossLeft &&  this.tilePosition[this.col - 1] === 4) || (crossBottom && this.tilePosition[this.col] === 4) || 
-    //     (crossRight && this.tilePosition[this.col + 1] === 4) || (crossTop && this.tilePosition[this.col] === 4)) {
-    //         this.pop()
-    //     }
-    // }
-
-    pop() {
-        let question = document.
-        alert(`Hello World`)
-    }
 }
