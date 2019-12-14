@@ -9,7 +9,8 @@ class Game {
         this.sand = new Image();
         this.wall = new Image();
         this.blackHole = new Image();
-
+        this.lives = 4;
+        this.randomQuestion = null;
         this.brainPlayer = new Component(this, 70, 70, 45, 45);
         this.key = new Component(this, 760, 760, 65, 65);
         this.cols = 16;
@@ -66,7 +67,22 @@ class Game {
     }
 
     init() {
-        this.start()
+        this.start();
+        document.querySelector(".btn-submit").addEventListener("click", () => { // Here Nick did the eventListener like that but when I compare my quention with my answer the rest of code its becoming crazy
+            let answer = document.getElementById("response").value
+            console.log('twice')
+            if (answer === this.solutions[this.randomQuestion]) {
+                // console.log(`???????? Q: ${this.solutions[randomQuestion]} A: ${answer}`)
+                this.winToNext()
+                // this.brainPlayer.positionPlayer()
+                // console.log(`====================== you get it`)                
+            }
+            else {
+                this.lostLive()
+                // console.log(`?????????? Q: ${this.solutions[randomQuestion]} A: ${answer}`)
+                // console.log(`++++++++++++++++ wrong answer`)
+            }
+        })
     }
 
     start() {
@@ -125,6 +141,8 @@ class Game {
         if (this.state.spiral && this.state.questions) {  //if true change this.state to false create a function to do it
             spiralImg.style.visibility = "visible";
             quest.style.visibility = "visible";
+            console.log('once')
+            
             this.createQuestion()
             ///////////////////////////////////////////////////////////////
             // if(this.brainPlayer.direction === 0) {
@@ -147,30 +165,39 @@ class Game {
         let randomQuestion = Math.floor(Math.random() * 8) + 1
         let newQuestion = document.getElementById("h3-quest");
         newQuestion.innerHTML = this.quest[randomQuestion]
-        document.querySelector(".btn-submit").addEventListener("click", () => { // Here Nick did the eventListener like that but when I compare my quention with my answer the rest of code its becoming crazy
-            let answer = document.getElementById("response").value
-            if (answer === this.solutions[randomQuestion]) {
-                console.log(`???????? Q: ${this.solutions[randomQuestion]} A: ${answer}`)
-                this.winToNext()
-                console.log(`====================== you get it`)                
-            }
-            else {
-                this.lostLive()
-                console.log(`?????????? Q: ${this.solutions[randomQuestion]} A: ${answer}`)
-                console.log(`++++++++++++++++ wrong answer`)
-            }
-        })
+        this.randomQuestion = randomQuestion;
     }
 
     lostLive() {
+        let livesBrain = document.querySelectorAll(".brain-lives")
+        // let score = document.getElementsByClassName("score")[0];
+        // let allTheLives = [...Array(this.lives).keys()].map(life => {
+        //     return '<span class="brain-lives" >🧠</span>'
+        // })
+        // console.log(allTheLives, this.lives)
+        // score.innerHTML = 'Lives: ' + allTheLives.join(' ');
+        console.log(`======================= length array lives ${livesBrain.length}`)
         let img = document.getElementById("spiral")
         let question = document.getElementById("questions")
         let message = document.createElement("h4")
-        message.innerHTML = "Wrong!! You lost one 🧠!! Keep trying..."
         let parentElement = document.getElementById("q-box")
-        img.style.visibility = "hidden"
-        question.style.visibility = "hidden"    
-        parentElement.appendChild(message)
+
+        if (livesBrain.length <= 1) {
+            img.style.visibility = "hidden"
+            question.style.visibility = "hidden"
+            let gameOver = document.createElement("h4")
+            gameOver.innerHTML = "GAME OVER!"
+            parentElement.appendChild(gameOver)
+            livesBrain[livesBrain.length-1].remove() 
+
+        } else {
+            message.innerHTML = "Wrong!! You lost your brain - 🧠!!"
+            img.style.visibility = "hidden"
+            question.style.visibility = "hidden"
+            parentElement.appendChild(message);
+            livesBrain[livesBrain.length-1].remove()  
+            // this.lives--;
+        } 
     }
 
     winToNext() {
@@ -180,8 +207,29 @@ class Game {
         message2.innerHTML = "Yay!! Go to the next one..."
         let parentElement2 = document.getElementById("q-box")
         img2.style.visibility = "hidden"
-        question2.style.visibility = "hidden"    
+        question2.style.visibility = "hidden"
         parentElement2.appendChild(message2)
-
     }
+
+    // positionPlayer(move) {
+    //     switch (move) {
+    //         case 0:
+    //             this.gameMap[this.row - 1].splice(this.game.gameMap[this.row - 1].indexOf(this.tilePosition[this.col], 1, 1))
+
+    //         case 1:
+    //             this.game.gameMap[this.row].spilce(this.game.gameMap[this.row].indexOf(this.tilePosition[this.col + 1]), 1, 1);
+    //             break;
+    //         case 2:
+    //             this.game.gameMap[this.row + 1].spilce(this.game.gameMap[this.row + 1].indexOf(this.tilePosition[this.col]), 1, 1);
+    //             break;
+    //         case 3:
+    //             this.game.gameMap[this.row].splice(this.game.gameMap[this.row].indexOf(this.tilePosition[this.col - 1]), 1, 1);
+    //             break;
+    //         default:
+
+
+    //     }
+    // }
+
+
 }
