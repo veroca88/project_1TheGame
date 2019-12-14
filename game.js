@@ -147,16 +147,16 @@ class Game {
         let randomQuestion = Math.floor(Math.random() * 8) + 1
         let newQuestion = document.getElementById("h3-quest");
         newQuestion.innerHTML = this.quest[randomQuestion]
-        document.querySelector(".btn-submit").addEventListener("click", () => {
+        document.querySelector(".btn-submit").addEventListener("click", () => { // Here Nick did the eventListener like that but when I compare my quention with my answer the rest of code its becoming crazy
             let answer = document.getElementById("response").value
             if (answer === this.solutions[randomQuestion]) {
-                console.log(`????????????????????????????????????????????????????????? Q: ${this.solutions[randomQuestion]} A: ${answer}`)
+                console.log(`???????? Q: ${this.solutions[randomQuestion]} A: ${answer}`)
                 this.winToNext()
                 console.log(`====================== you get it`)                
             }
-            else if (answer !== this.solutions[randomQuestion]) {
+            else {
                 this.lostLive()
-                console.log(`????????????????????????????????????????????????????????? Q: ${this.solutions[randomQuestion]} A: ${answer}`)
+                console.log(`?????????? Q: ${this.solutions[randomQuestion]} A: ${answer}`)
                 console.log(`++++++++++++++++ wrong answer`)
             }
         })

@@ -19,7 +19,7 @@ h3 {
 h4 {
     position: absolute;
     font-size: 2rem;
-    animation: messageLost 0s ease-in 1s forwards;
+    animation: messageLost 0s ease-in 3s forwards;
 }
 
 input {
