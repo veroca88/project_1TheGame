@@ -9,7 +9,7 @@ class Component {
         this.row = 1;
         this.img = new Image();
         this.tilePosition = 0;
-        this.direction;
+        this.direction = []
     }
     drawComponent(imgSource) {
         let daCtx = this.game.ctx;
@@ -35,9 +35,9 @@ class Component {
                             this.x -= this.game.tileW;
                             this.col--;
                         } else if (this.tilePosition[this.col - 1] === 4) {
-                            this.direction = 2;
+                            this.direction = 3;
                             this.game.renderSpiral()
-                            
+
                             console.log(`============================= ARRAY : ${this.game.gameMap[this.row]} (FOUR) ${this.tilePosition[this.col - 1]} INDEX : ${this.game.gameMap[this.row].indexOf(this.tilePosition[this.col - 1])} `)
                         }
                         break;
@@ -49,7 +49,7 @@ class Component {
                             this.y -= this.game.tileH;
                             this.row--;
                         } else if (this.tilePosition[this.col] === 4) {
-                            this.direction = 3;
+                            this.direction = 0;
                             this.game.renderSpiral()
 
                             console.log(`============position ROW : ${this.game.gameMap[this.row - 1]} position y: ${this.tilePosition[this.col - 1]}`)
@@ -63,13 +63,13 @@ class Component {
                         if (this.tilePosition[this.col + 1] === 1 && this.x <= 900 - this.width) {
                             this.x += this.game.tileW;
                             this.col++;
-                        } else if (this.tilePosition[this.col + 1] === 4) {
-                            this.direction = 0;
+                        } else if (this.tilePosition[this.col + 1] === 4) {   
+                            this.direction = 1                         
                             this.game.renderSpiral()
-                            // this.positionPlayer(1)
                             
-                            console.log(`============ ARRAY : ${this.game.gameMap[this.row]}(FOUR): ${this.tilePosition[this.col + 1]}  INDEX: ${this.game.gameMap[this.row].indexOf(this.tilePosition[this.col + 1])} `)     //this.tilePosition[this.col] shows me the number where is stand up my player inside the array ROW
-                        
+
+                            // console.log(`============ ARRAY : ${this.game.gameMap[this.row]}(FOUR): ${this.tilePosition[this.col + 1]}  INDEX: ${this.game.gameMap[this.row].indexOf(this.tilePosition[this.col + 1])} `)     //this.tilePosition[this.col] shows me the number where is stand up my player inside the array ROW
+
                         }
                         break;
                     case 40: //down //this is going to be my 2
@@ -80,7 +80,7 @@ class Component {
                             this.y += this.game.tileH;
                             this.row++;
                         } else if (this.tilePosition[this.col] === 4) {
-                            this.direction = 1;
+                            this.direction = 2;
                             this.game.renderSpiral()
                             console.log(`============  ARRAY: ${this.game.gameMap[this.row + 1]} (FOUR) ${this.tilePosition[this.col]} INDEX: ${this.game.gameMap[this.row + 1].indexOf(this.tilePosition[this.col])}`)
                         }
@@ -92,6 +92,7 @@ class Component {
 
     getLeft() {
         return this.x;
+        
     }
     getRight() {
         return this.x + this.width;
@@ -105,5 +106,11 @@ class Component {
         return this.y + this.height;
     }
 
+    getAccess() {
+        if (this.game.winToNext()) {
+            console.log(`++++++++++++++++++++++++++++++++++++++++++ YES`)
+        }
+    }
 
+    
 }
