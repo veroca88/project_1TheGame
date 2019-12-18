@@ -46,21 +46,20 @@ class Game {
             1: "What comes next in the secuence? -2, 5, -4, 3, -6, ? ",
             2: "What comes next in the secuence? 1, 4, 9, 16, 25, ?",
             3: "What comes next in the secuence? 7, 21, 14, 42, 28, ?",
-            5: "What comes next in the secuence? 30, 28, 25, 21, 16, ?",
-            6: "What comes next in the secuence? 16, 22, 34, 58, 106, ?",
-            7: "What comes next in the secuence? 17, 40,61, 8, 97, ?",
-            8: "What comes next in the secuence? 55, 34, 21, 13, 8, ?"
+            4: "What comes next in the secuence? 30, 28, 25, 21, 16, ?",
+            5: "What comes next in the secuence? 16, 22, 34, 58, 106, ?",
+            6: "What comes next in the secuence? 17, 40, 61, 8, 97, ?",
+            7: "What comes next in the secuence? 55, 34, 21, 13, 8, ?"
         };
 
         this.solutions = {
             1: "1",
             2: "36",
             3: "84",
-            4: "720",
-            5: "10",
-            6: "202",
-            7: "112",
-            8: "5"
+            4: "10",
+            5: "202",
+            6: "112",
+            7: "5"
 
         }
     }
