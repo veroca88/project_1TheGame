@@ -5,42 +5,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./styles.css">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Sulphur+Point&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Font Style -->
+    <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
 
     <link href="./images/favicon.ico" rel="icon" type="image/x-icon" />
 
     <title>Where did I put my keys?</title>
-
 </head>
 
-<body id="game-body">
-    <div class="game-box">
+<body id="presentation-body">
 
-        <section>
-            <h1 class="desc-game">Where did I put my keys?</h1>
-            <h2 class="desc-game score">Lives: <span class="brain-lives" >🧠</span><span class="brain-lives">🧠</span><span class="brain-lives">🧠</span><span class="brain-lives">🧠</span>  </h2>
-        </section>
-
-        <section id="q-box">
-            <img id="spiral" src="./images/rainbow+spiral.gif" alt="Spiral colorfull">
-            <div id="questions">
-                <h3 id="h3-quest"> </h3>
-                <input id="response" type="text">
-                <input type="button" value="submit" class="btn-submit"></a>
-            </div>
-        </section>
-
+    <div id="box-about">
+        <div class="toggle-btn" onclick="toggleSideAbout()">
+            <a href="#">
+                <img id="key-presentation" src="./images/goldKey.png" alt="animated key">
+                <p>About the game</p>
+            </a>
+        </div>
+        <h3 class="text-about">Where did I put my keys?</h3>
+        <p class="text-about">This game is a trainning brain game, the objetive is get the key,
+            in your way you are going to solve some numerical reasoning tests.
+            <br>
+            To move you can use the arrows of the keyboard. ⬅️⬆️➡️⬇️
+            <br>
+            For the answer use only numbers.
+            <br>
+            <br>
+            Why is numerical reasoning important?
+            Numerical reasoning ability is one of the most basic skill areas,
+            it requires interpreting data provided, is the ability to look for
+            a pattern or a trend and the generalizing it.
+        </p>
     </div>
-    <div id="board-game">
-        <canvas id="game"></canvas>
 
-    </div>
-    <script src="./game.js"></script>
-    <script src="./component.js"></script>
-    <script src="./index.js"></script>
+    <h1 id="presentation">Where did I put my keys?</h1>
+    <img id="brain-presentation" src="./images/freezingBrain.png" alt="animated brain">
+
+    <button class="myButton"><a href="gameBoard.html">START GAME</a></button>
+
+
+    <script>
+        function toggleSideAbout() {
+            document.getElementById("box-about").classList.toggle("active");
+        }
+
+
+        function presentationMove() {
+
+            elPlayer = document.getElementById("brain-presentation");
+
+            docWidth = screen.width - elPlayer.width;
+            docHeigth = screen.height - elPlayer.height;
+
+            setInterval(move, 600)
+        }
+
+        function move() {
+
+            elPlayer.style.top = Math.round(Math.random() * docWidth) + "px"
+            elPlayer.style.left = Math.round(Math.random() * docHeigth) + "px"
+        }
+
+        // let elGoal = document.getElementById("key-presentation")
+
+        presentationMove()
+
+    </script>
+
 </body>
 
 </html>
