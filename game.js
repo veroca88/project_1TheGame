@@ -161,7 +161,7 @@ class Game {
                         
                         createQuestion() {
                             console.log(`QUESTION HERE`)
-                            let randomQuestion = Math.floor(Math.random() * 8) + 1
+                            let randomQuestion = Math.floor(Math.random() * 7) + 1
                             let newQuestion = document.getElementById("h3-quest");
                             newQuestion.innerHTML = this.quest[randomQuestion]
                             this.randomQuestion = randomQuestion;
