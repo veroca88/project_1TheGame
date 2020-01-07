@@ -20,7 +20,7 @@ class Game {
         this.gameMap = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 1, 2, 2, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 1, 0],
-            [0, 1, 2, 2, 2, 1, 1, 1, 1, 4, 1, 1, 2, 2, 1, 0],
+            [0, 1, 2, 2, 2, 1, 1, 1, 1, 4, 1, 1, 2, 2, 4, 0],
             [0, 1, 2, 2, 1, 1, 2, 2, 0, 0, 0, 1, 2, 1, 1, 0],
             [0, 1, 1, 4, 1, 2, 2, 2, 0, 0, 0, 1, 1, 1, 0, 0],
             [0, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 0, 0, 0],
@@ -29,7 +29,7 @@ class Game {
             [0, 1, 4, 1, 2, 2, 1, 2, 1, 1, 1, 2, 2, 2, 0, 0],
             [0, 0, 0, 1, 2, 1, 1, 4, 1, 2, 2, 2, 2, 1, 1, 0],
             [0, 0, 0, 1, 2, 1, 0, 0, 1, 2, 2, 1, 4, 1, 1, 0],
-            [0, 0, 1, 1, 2, 1, 0, 0, 1, 4, 1, 1, 2, 2, 1, 0],
+            [0, 0, 1, 1, 2, 1, 0, 0, 1, 4, 1, 1, 2, 2, 4, 0],
             [0, 1, 1, 2, 2, 1, 0, 0, 1, 2, 1, 2, 2, 2, 1, 0],
             [0, 2, 1, 4, 1, 1, 0, 0, 1, 2, 1, 1, 4, 1, 1, 0],
             [0, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0],
@@ -140,7 +140,8 @@ class Game {
                         if (this.state.spiral && this.state.questions) {  //if true change this.state to false create a function to do it
                             spiralImg.style.visibility = "visible";
                             quest.style.visibility = "visible";
-                            console.log('once')
+                            // console.log('once')
+                            console.log(`============================= ARRAY : ${this.brainPlayer.direction} `)
                             
                             this.createQuestion()
                             ///////////////////////////////////////////////////////////////
@@ -209,7 +210,24 @@ class Game {
                                 question2.style.visibility = "hidden"
                                 parentElement2.appendChild(message2)
                                 
-                                this.gameMap[this.brainPlayer.row][this.brainPlayer.col + 1] = 1;
+                                let inDirection = this.brainPlayer.direction
+
+                                switch (inDirection) {
+                                    case 1:
+                                        this.gameMap[this.brainPlayer.row][this.brainPlayer.col + 1] = 1;
+                                        break;
+                                    case 3:
+                                        this.gameMap[this.brainPlayer.row][this.brainPlayer.col - 1] = 1;
+                                        break;
+                                    case 2:
+                                        this.gameMap[this.brainPlayer.row + 1][this.brainPlayer.col] = 1;
+                                        break;
+                                    case 0:
+                                        this.gameMap[this.brainPlayer.row - 1][this.brainPlayer.col] = 1;
+                                        break;
+                                    default:
+                                        this.gameMap                                        
+                                }
                                 // console.log(`ROW POSITION ${this.brainPlayer.row} COL POSITION ${this.brainPlayer.col} ELEMENT ${this.gameMap[4]}`)
                            
                             }

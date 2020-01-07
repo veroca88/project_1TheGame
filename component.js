@@ -38,7 +38,7 @@ class Component {
                             this.direction = 3;
                             this.game.renderSpiral()
 
-                            console.log(`============================= ARRAY : ${this.game.gameMap[this.row]} (FOUR) ${this.tilePosition[this.col - 1]} INDEX : ${this.game.gameMap[this.row].indexOf(this.tilePosition[this.col - 1])} `)
+                            console.log(`============================= ARRAY : ${this.direction} `)
                         }
                         break;
                     case 38: //up //this is going to be my 0
@@ -52,7 +52,9 @@ class Component {
                             this.direction = 0;
                             this.game.renderSpiral()
 
-                            console.log(`============position ROW : ${this.game.gameMap[this.row - 1]} position y: ${this.tilePosition[this.col - 1]}`)
+                            
+
+                            // console.log(`============position ROW : ${this.game.gameMap[this.row - 1]} position y: ${this.tilePosition[this.col - 1]}`)
                             // this.game.createQuestion()
                         }
                         break;
