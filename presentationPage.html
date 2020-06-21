@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Where did I put my keys?</title>
+    <link rel="stylesheet" href="stylesGame.css/styles.css" />
+    <!-- Google Font Style -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Alata&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./images/favicon.ico" rel="icon" type="image/x-icon" />
+    <!-- Bootstrap CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS only -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <section class="wrapper box-about">
+      <!-- SIDEBAR -->
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <h3>About the Game</h3>
+
+          <ul class="list-unstyled components">
+            <p>Where did I put my keys?</p>
+
+            <li class="active">
+              <a href="#home"
+                >This game is a training brain game, the objective is get the
+                key, in your way you are going to solve some numerical reasoning
+                tests.
+                <br />
+                To move you can use the arrows of the keyboard. ⬅️⬆️➡️⬇️
+                <br />
+                For the answer use only numbers.
+                <br />
+                <br />
+                Why is numerical reasoning important? Numerical reasoning
+                ability is one of the most basic skill areas, it requires
+                interpreting data provided, is the ability to look for a pattern
+                or a trend and the generalizing it.</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- CONTENT -->
+      <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+              <i class="fas fa-info-circle"></i>
+              <span>Rules of Game</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+      <div class="container-fluid" onClick="toggleSideAbout()">
+        <h1>Where did I put my keys?</h1>
+        <img
+          id="brain-presentation"
+          src="./images/freezingBrain.png"
+          alt="animated brain"
+        />
+        <button><a href="./gameBoard.html">START GAME</a></button>
+      </div>
+      <div class="overlay"></div>
+    </section>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+        });
+      });
+    </script>
+    <script>
+      function toggleSideAbout() {
+        document.getElementById("box-about").classList.toggle("active");
+      }
+
+      function presentationMove() {
+        elPlayer = document.getElementById("brain-presentation");
+
+        docWidth = screen.width - elPlayer.width;
+        docHeigth = screen.height - elPlayer.height;
+
+        setInterval(move, 600);
+      }
+
+      function move() {
+        elPlayer.style.top = Math.round(Math.random() * docWidth) + "px";
+        elPlayer.style.left = Math.round(Math.random() * docHeigth) + "px";
+      }
+
+      // let elGoal = document.getElementById("key-presentation")
+
+      presentationMove();
+    </script>
+    S
+  </body>
+</html>

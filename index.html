@@ -1,78 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
     <!-- Google Font Style -->
-    <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
-
+    <link
+      href="https://fonts.googleapis.com/css?family=Alata&display=swap"
+      rel="stylesheet"
+    />
     <link href="./images/favicon.ico" rel="icon" type="image/x-icon" />
-
     <title>Where did I put my keys?</title>
-</head>
-
-<body id="presentation-body">
-
+    <!-- CSS only -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="presentation-body .container-fluid">
     <div id="box-about">
-        <div class="toggle-btn" onclick="toggleSideAbout()">
-            <a href="#">
-                <img id="key-presentation" src="./images/goldKey.png" alt="animated key">
-                <p>About the game</p>
-            </a>
-        </div>
-        <h3 class="text-about">Where did I put my keys?</h3>
-        <p class="text-about">This game is a training brain game, the objective is get the key,
-            in your way you are going to solve some numerical reasoning tests.
-            <br>
-            To move you can use the arrows of the keyboard. ⬅️⬆️➡️⬇️
-            <br>
-            For the answer use only numbers.
-            <br>
-            <br>
-            Why is numerical reasoning important?
-            Numerical reasoning ability is one of the most basic skill areas,
-            it requires interpreting data provided, is the ability to look for
-            a pattern or a trend and the generalizing it.
-        </p>
+      <div class="toggle-btn" onclick="toggleSideAbout()">
+        <a href="#">
+          <img
+            id="key-presentation"
+            src="./images/goldKey.png"
+            alt="animated key"
+          />
+          <p>About the game</p>
+        </a>
+      </div>
+      <h3 class="text-about">Where did I put my keys?</h3>
+      <p class="text-about">
+        This game is a training brain game, the objective is get the key, in
+        your way you are going to solve some numerical reasoning tests.
+        <br />
+        To move you can use the arrows of the keyboard. ⬅️⬆️➡️⬇️
+        <br />
+        For the answer use only numbers.
+        <br />
+        <br />
+        Why is numerical reasoning important? Numerical reasoning ability is one
+        of the most basic skill areas, it requires interpreting data provided,
+        is the ability to look for a pattern or a trend and the generalizing it.
+      </p>
     </div>
 
     <h1 id="presentation">Where did I put my keys?</h1>
-    <img id="brain-presentation" src="./images/freezingBrain.png" alt="animated brain">
+    <img
+      id="brain-presentation"
+      src="./images/freezingBrain.png"
+      alt="animated brain"
+    />
 
     <button class="myButton"><a href="./gameBoard.html">START GAME</a></button>
 
-
     <script>
-        function toggleSideAbout() {
-            document.getElementById("box-about").classList.toggle("active");
-        }
+      function toggleSideAbout() {
+        document.getElementById("box-about").classList.toggle("active");
+      }
 
+      function presentationMove() {
+        elPlayer = document.getElementById("brain-presentation");
 
-        function presentationMove() {
+        docWidth = screen.width - elPlayer.width;
+        docHeigth = screen.height - elPlayer.height;
 
-            elPlayer = document.getElementById("brain-presentation");
+        setInterval(move, 600);
+      }
 
-            docWidth = screen.width - elPlayer.width;
-            docHeigth = screen.height - elPlayer.height;
+      function move() {
+        elPlayer.style.top = Math.round(Math.random() * docWidth) + "px";
+        elPlayer.style.left = Math.round(Math.random() * docHeigth) + "px";
+      }
 
-            setInterval(move, 600)
-        }
+      // let elGoal = document.getElementById("key-presentation")
 
-        function move() {
-
-            elPlayer.style.top = Math.round(Math.random() * docWidth) + "px"
-            elPlayer.style.left = Math.round(Math.random() * docHeigth) + "px"
-        }
-
-        // let elGoal = document.getElementById("key-presentation")
-
-        presentationMove()
-
+      presentationMove();
     </script>
-
-</body>
-
+  </body>
 </html>

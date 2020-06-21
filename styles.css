@@ -1,233 +1,227 @@
 body {
-    font-family: 'Sulphur Point', sans-serif;
-    margin: 0px;
-    padding: 0px;
+  font-family: "Sulphur Point", sans-serif;
+  margin: 0px;
+  padding: 0px;
 
-    /* background-image: url(./images/milkyWay.jpg);
+  /* background-image: url(./images/milkyWay.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; */
-    
 }
 h1 {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 h2 {
-    display: inline;
-    font-size: 2.4rem;
+  display: inline;
+  font-size: 2.4rem;
 }
 h3 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 h4 {
-    position: absolute;
-    font-size: 2rem;
-    animation: messageLost 0s ease-in 3s forwards;
+  position: absolute;
+  font-size: 2rem;
+  animation: messageLost 0s ease-in 3s forwards;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 input {
-    padding: 15px;
-    margin: 30px;;
+  padding: 15px;
+  margin: 30px;
 }
 span {
-    display: contents;
+  display: contents;
 }
 
 @keyframes messageLost {
-    to {
-        width:0;
-        height:0;
-        overflow:hidden;
-    }
+  to {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
 }
 
 /* Presentation Game Page */
 
-#presentation-body {
-    height: 450px;
-    background-color: black;
-    text-align: center;
-    font-family: 'Sulphur Point', sans-serif;
-    color: white;
+.presentation-body {
+  background-color: black;
+  text-align: center;
+  font-family: "Sulphur Point", sans-serif;
+  color: white;
 }
 #brain-presentation {
-    width: 150px;
-    position: fixed;
+  width: 150px;
+  position: fixed;
 }
 
 #about-game {
-    position: fixed;
-    top: 40px;
-    right: 100px;
-    text-decoration: none;
-    font-size: 20px;
-    color: white;
-    font-family: 'Sulphur Point', sans-serif;
+  position: fixed;
+  top: 40px;
+  right: 100px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  font-family: "Sulphur Point", sans-serif;
 }
 
 #presentation {
-    padding-top: 15%;
-    font-family: 'Alata', sans-serif;
-    font-size: 60px;
+  padding-top: 15%;
+  font-family: "Alata", sans-serif;
+  font-size: 60px;
 }
 
-/* #key-presentation {
-    position: fixed;
+.key-presentation {
+  width: 5%;
+  /* position: fixed;
     width: 100px;
     right: 100px;
     top: 80px;
-    transition: width 1s, heigth 1s, transform 1s;
+    transition: width 1s, heigth 1s, transform 1s; */
 }
 
-#key-presentation:hover {
+/* #key-presentation:hover {
     transform: rotate(360deg);
 } */
 
 .myButton {
-    box-shadow: 3px -5px 3px -1px #ffffff;
-	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
-	background-color:#f9f9f9;
-	border-radius:27px;
-	border:3px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
-	font-family: Arial;
-	font-size:17px;
-    font-weight: bold;
-    margin-top: 20px;
-	padding:10px 25px;
-	text-decoration: none;
-	text-shadow:0px 1px 0px #ffffff;
+  box-shadow: 3px -5px 3px -1px #ffffff;
+  background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+  background-color: #f9f9f9;
+  border-radius: 27px;
+  border: 3px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-family: Arial;
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 10px 25px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
 }
 .myButton:hover {
-    background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
-	background-color:#e9e9e9;
+  background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+  background-color: #e9e9e9;
 }
 .myButton:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
 
 /* About The Game */
 
 #box-about {
-    position: fixed;
-    width: 400px;
-    height: 80%;
-    background: rgba(39, 27, 104, 0.644);
-    font-size: 1.4rem;
-    border: 2px dotted white;
-    right: -400px;
-    transition:  all 500ms linear;
+  position: fixed;
+  width: 400px;
+  height: 100%;
+  background: rgba(39, 27, 104, 0.644);
+  font-size: 1.4rem;
+  border: 2px dotted white;
+  right: -400px;
+  transition: all 500ms linear;
 }
 
 #box-about.active {
-    right: 0px;
+  right: 0px;
 }
 
 #box-about .text-about {
-    list-style: none;
-    padding: 5% 10%;
-    color: white;
+  list-style: none;
+  padding: 5% 10%;
+  color: white;
 }
 
 #box-about .toggle-btn {
-    position: absolute;
-    list-style: none;
-    padding: 2px 5px;
-    right: 430px;
-    width: 200px;
+  position: absolute;
+  list-style: none;
+  padding: 2px 5px;
+  right: 430px;
+  width: 200px;
 }
 
-#key-presentation {
-    padding-left: 60px;
-}
+/* #key-presentation {
+  padding-left: 60px;
+} */
 
-#box-about .toggle-btn #key-presentation {
-    display: block;
-    width: 60px;
-    margin: 5px 0px;
+#box-about .toggle-btn {
+  display: block;
+  width: 60px;
+  margin: 5px 0px;
 }
 /* Game.js */
 
 #game-body {
-    background-color: rgb(65, 138, 50);
-    /* background-color: rgb(223,196,127); */
-    display: flex;
-    justify-content: space-around;
+  background-color: rgb(65, 138, 50);
+  /* background-color: rgb(223,196,127); */
+  display: flex;
+  justify-content: space-around;
 }
 
 #board-game {
-    border: 1px solid white;
-    height: 900px;
-    width: 900px;
-    display: flex;
+  border: 1px solid white;
+  height: 900px;
+  width: 900px;
+  display: flex;
 }
 
 .desc-game {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Question Box */
 .game-box {
-    width: 900px;
-    height: 900px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 900px;
+  height: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #q-box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 #spiral {
-    visibility: hidden;
-    width: 300px;
-    position: absolute;
-    left: -20px;
+  visibility: hidden;
+  width: 300px;
+  position: absolute;
+  left: -20px;
 }
 
 #questions {
-    visibility: hidden;
-    width: 500px;
-    height: 400px;
-    margin-left: 200px;
-    margin-top: 100px;
+  visibility: hidden;
+  width: 500px;
+  height: 400px;
+  margin-left: 200px;
+  margin-top: 100px;
 }
 
 .btn-submit {
-    background: #3DF6E5;
-    background-image: linear-gradient(to bottom, #3DF6E5, #1E62D0);
-    border-radius: 20px;
-    color: #FFFFFF;
-    font-family: Open Sans;
-    font-size: 1rem;
-    font-weight: 100;
-    padding: 10px;
-    border: solid #337FED 1px;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
+  background: #3df6e5;
+  background-image: linear-gradient(to bottom, #3df6e5, #1e62d0);
+  border-radius: 20px;
+  color: #ffffff;
+  font-family: Open Sans;
+  font-size: 1rem;
+  font-weight: 100;
+  padding: 10px;
+  border: solid #337fed 1px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
 }
-    
+
 .btn-submit:hover {
-    background: #238A32;
-    border: dotted #238A32 1px;
-    border-radius: 20px;
-    text-decoration: none;
+  background: #238a32;
+  border: dotted #238a32 1px;
+  border-radius: 20px;
+  text-decoration: none;
 }
-
-
-
-
-
