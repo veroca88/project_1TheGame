@@ -28,7 +28,7 @@
     />
   </head>
   <body>
-    <section class="wrapper box-about">
+    <section class="wrapper">
       <!-- SIDEBAR -->
       <nav id="sidebar">
         <div class="sidebar-header">
@@ -38,8 +38,8 @@
             <p>Where did I put my keys?</p>
 
             <li class="active">
-              <a href="#home"
-                >This game is a training brain game, the objective is get the
+              <p>
+                This game is a training brain game, the objective is get the
                 key, in your way you are going to solve some numerical reasoning
                 tests.
                 <br />
@@ -51,34 +51,39 @@
                 Why is numerical reasoning important? Numerical reasoning
                 ability is one of the most basic skill areas, it requires
                 interpreting data provided, is the ability to look for a pattern
-                or a trend and the generalizing it.</a
-              >
+                or a trend and the generalizing it.
+              </p>
             </li>
           </ul>
         </div>
       </nav>
 
       <!-- CONTENT -->
-      <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-              <i class="fas fa-info-circle"></i>
-              <span>Rules of Game</span>
-            </button>
-          </div>
-        </nav>
-      </div>
-      <div class="container-fluid" onClick="toggleSideAbout()">
-        <h1>Where did I put my keys?</h1>
-        <img
-          id="brain-presentation"
-          src="./images/freezingBrain.png"
-          alt="animated brain"
-        />
-        <button><a href="./gameBoard.html">START GAME</a></button>
-      </div>
-      <div class="overlay"></div>
+      <section class="container-fluid">
+        <div id="content">
+          <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <i class="fas fa-info-circle"></i>
+                <span>Rules of Game</span>
+              </button>
+            </div>
+          </nav>
+        </div>
+        <div class="container-fluid title">
+          <h1>Where did I put my keys?</h1>
+          <img
+            id="brain-presentation"
+            src="./images/freezingBrain.png"
+            alt="animated brain"
+          />
+        </div>
+        <div class="game">
+          <button type="button" class="btn btn-info">
+            <a href="./gameBoard.html">Start Game</a>
+          </button>
+        </div>
+      </section>
     </section>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -88,36 +93,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $("#sidebarCollapse").on("click", function () {
-          $("#sidebar").toggleClass("active");
-        });
-      });
-    </script>
-    <script>
-      function toggleSideAbout() {
-        document.getElementById("box-about").classList.toggle("active");
-      }
-
-      function presentationMove() {
-        elPlayer = document.getElementById("brain-presentation");
-
-        docWidth = screen.width - elPlayer.width;
-        docHeigth = screen.height - elPlayer.height;
-
-        setInterval(move, 600);
-      }
-
-      function move() {
-        elPlayer.style.top = Math.round(Math.random() * docWidth) + "px";
-        elPlayer.style.left = Math.round(Math.random() * docHeigth) + "px";
-      }
-
-      // let elGoal = document.getElementById("key-presentation")
-
-      presentationMove();
-    </script>
-    S
+    <script src="presentation.js"></script>
   </body>
 </html>

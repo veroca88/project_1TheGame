@@ -1,23 +1,74 @@
+body {
+  font-family: "Alata", sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+/* -------------------------------------- STYLES PRESENTATION PAGE ----------------------------  */
+/* SIDEBAR */
+
 .wrapper {
   display: flex;
   align-items: stretch;
+  background-color: rgb(140, 195, 209);
 }
 
 #sidebar {
-  min-width: 250px;
-  max-width: 250px;
+  min-width: 260px;
+  max-width: 260px;
   min-height: 100vh;
+  background-color: rgb(205, 171, 238);
 }
 
 #sidebar.active {
-  margin-left: -250px;
+  margin-left: -260px;
 }
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -250px;
+    margin-left: -260px;
   }
   #sidebar.active {
     margin-left: 0;
   }
 }
+
+.sidebar-header {
+  margin: 7% 10%;
+}
+
+#sidebarCollapse {
+  margin-top: 2%;
+}
+
+/* BRAIN PRESENTANTION PAGE */
+
+#brain-presentation {
+  width: 150px;
+  position: fixed;
+}
+
+.sidebar-header > h3 {
+  margin-top: 20%;
+  margin-bottom: 10%;
+}
+
+.title {
+  text-align: center;
+  font-family: "Alata", sans-serif;
+  font-size: 60px;
+  padding-top: 10vw;
+  color: #000000;
+}
+
+.btn > a {
+  text-decoration: none;
+  text-decoration-color: none;
+  color: white;
+}
+
+.game {
+  text-align: center;
+  padding-top: 2vw;
+}
+
+/* -------------------------------------- STYLES GAME PAGE ----------------------------  */
